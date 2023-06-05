@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+    <div class="alert alert-primary" role="alert">
+        <h3>Detail Page</h3> 
+        <a href="{% url 'list' %}">
+            <p>Move to List</p>
+        </a>
+    </div>
+{% endblock header %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="container">
+        <div class="alert alert-primary" role="alert">
+            <p>Title:{{object.title}}</p>
+            <p>Contributor:{{object.poster}}</p>
+            <p><img src = "{{object.sns_image.url}}"></p>
+            <a href="{% url 'good' object.pk %}" class="btn btn-primary" role="button" data-bs-toggle="button">good</a>
+            <a href="{% url 'read' object.pk %}" class="btn btn-primary" role="button" data-bs-toggle="button" aria-pressed="true">read</a>
+        </div>
+    </div>
+{% else %}
+please login
+{% endif %}
+{% endblock content %}
+
+
+
+
+
